@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
-export default function AuthContext() {
+const UserContext = createContext()
+export default function UserProvider({children}) {
     const GetUser = async () => {
     const res = await fetch('/auth/user')
     const json = await res.json();
@@ -14,6 +15,10 @@ export default function AuthContext() {
     const [user, setUser] = useState('')
 
     return (
-        <div>{user.name}</div>
+       <>
+       <UserContext.Provider value={{user, setUser}}>
+        {children}
+       </UserContext.Provider>
+       </>
     )
 }

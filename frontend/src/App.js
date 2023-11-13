@@ -1,14 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import AuthContext from './context/AuthContext';
 import Login from './pages/Login';
+import {Routes, Route} from 'react-router-dom'
+import Landing from './pages/Landing';
 
 function App() {
   return (
     <>
-    <AuthContext/>
-    <Login/>
-    </>
+    <Routes>
+      <Route path='/' element={<Landing/>}/>
+      <Route path='/login' element={<Login/>}/>
+    </Routes>
+      </>
   );
 }
 
