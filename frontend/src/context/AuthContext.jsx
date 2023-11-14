@@ -9,7 +9,7 @@ export default function UserProvider({children}) {
     console.log(json)
     }
     useEffect(()=>{
-        GetUser()
+        // GetUser()
     },[])
 
     const [user, setUser] = useState('')

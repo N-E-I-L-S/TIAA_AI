@@ -3,11 +3,12 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Button from '../components/Button'
+import NavButton from '../components/NavButton'
 
 export default function Landing() {
   return (
     <>
+    <div>
     <Navbar />
       <div className="relative isolate h-[100vh] px-6 lg:px-8">
         {/* <div
@@ -36,7 +37,7 @@ export default function Landing() {
               Transform your employee lifecycle with AI-driven retirement solutions for employees, tailored annuity options, and organizational enhancements.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button text="Get Started"/>
+              <NavButton text="Get Started"/>
               <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                 Learn more <span aria-hidden="true">→</span>
               </a>
@@ -87,5 +88,6 @@ export default function Landing() {
       </div>
       <Footer/>
     </div>
+    </>
   )
 }
