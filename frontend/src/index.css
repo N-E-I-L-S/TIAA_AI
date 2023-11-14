@@ -14,4 +14,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-} 
+}
+*{
+  font-size: 1.1rem;
+}
+/* 
+Dark color: #093b60
+Light Color : #2eade2 
+*/
