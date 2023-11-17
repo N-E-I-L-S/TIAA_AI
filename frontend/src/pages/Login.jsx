@@ -1,38 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import Navbar from '../components/Navbar';
+import UserAuth from '../context/AuthContext';
 
 export default function Login() {
 
-    async function UserLogin(){
-        console.log(0)
-        const body= {
-            "name":"neil1",
-            "email" : "neil@gmail.com",
-            "password" : "12345"
-        }
-        const url = `/auth/login`
-        try{
-        const response = await fetch(url, {
-        method: 'POST',
-          headers: {
-           'Content-Type': 'application/json',
-         },
-          body: JSON.stringify(body),
-          });
-        if(response.status === 200)
-        console.log('ok')
-        else
-        console.log('error')
-        }
-        catch{
-            console.log('error')
-          }
-    }
-    useEffect(()=>{
-        UserLogin()
-    },[])
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const {login} = UserAuth()
 
     return (
         <>
+        <Navbar/>
           <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
               <h1 className="justify-center text-center">
@@ -56,6 +34,7 @@ export default function Login() {
                   </label>
                   <div className="mt-2">
                     <input
+                    onChange={e=>setEmail(e.target.value)}
                       id="email"
                       name="email"
                       type="email"
@@ -79,6 +58,7 @@ export default function Login() {
                   </div>
                   <div className="mt-2">
                     <input
+                    onChange={e=>setPassword(e.target.value)}
                       id="password"
                       name="password"
                       type="password"
@@ -91,7 +71,8 @@ export default function Login() {
     
                 <div>
                   <button
-                    type="submit"
+                    onClick={()=>login({email,password})}
+                    type="button"
                     className="flex w-full justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Sign in

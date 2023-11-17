@@ -62,4 +62,7 @@ def Logout(request):
         }
         return response
 
+@api_view(['POST'])
+def Test(request):
+    return Response({"answer": "Prompt Reply"})
   

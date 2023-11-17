@@ -2,6 +2,7 @@ import './App.css';
 import Login from './pages/Login';
 import {Routes, Route} from 'react-router-dom'
 import Landing from './pages/Landing';
+import AssetAllocation from './pages/AssetAllocation';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Landing/>}/>
       <Route path='/login' element={<Login/>}/>
+      <Route path='/test' element={<AssetAllocation/>}/>
     </Routes>
       </>
   );
