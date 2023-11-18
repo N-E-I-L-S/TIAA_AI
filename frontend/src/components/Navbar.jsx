@@ -43,9 +43,9 @@ export default function Navbar() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Products
-          </a>
+          <NavLink to="/assetmanager" className="text-sm font-semibold leading-6 text-gray-900">
+            Asset Manager
+          </NavLink>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
             Features
           </a>
