@@ -62,4 +62,9 @@ def Logout(request):
         }
         return response
 
-  
+@api_view(['POST'])
+def Test(request):
+    question = request.data['question']
+    return Response({"answer": "Prompt Reply",
+    "question" : question})
+    

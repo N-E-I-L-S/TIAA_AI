@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
   ArrowPathIcon,
@@ -10,21 +10,27 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { NavLink, useNavigate } from 'react-router-dom'
+import UserAuth from '../context/AuthContext'
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navigate = useNavigate()
+
+  const { user, setUser, logout } = UserAuth()
+
   return (
     <div className="bg-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <NavLink to="/" className="-m-1.5 p-1.5">
             <span className="text-base font-title tracking-tight text-blue-100 sm:text-6base">
               Hire2
             </span>
             <span className="text-base font-title tracking-tight text-blue-900 sm:text-6base">
               Retire
             </span>
-          </a>
+          </NavLink>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -37,9 +43,9 @@ export default function Navbar() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Products
-          </a>
+          <NavLink to="/assetmanager" className="text-sm font-semibold leading-6 text-gray-900">
+            Asset Manager
+          </NavLink>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
             Features
           </a>
@@ -51,23 +57,28 @@ export default function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          {
+            !user ?
+              <NavLink to="/login" className="text-sm font-semibold leading-6 text-gray-900">
+                Log in <span aria-hidden="true">&rarr;</span>
+              </NavLink>
+              :
+              <button className='text-sm font-semibold leading-6 text-gray-900' onClick={logout}>Logout</button>
+          }
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="text-base font-title tracking-tight text-blue-100 sm:text-6base">
-              Hire2
-            </span>
-            <span className="text-base font-title tracking-tight text-blue-900 sm:text-6base">
-              Retire
-            </span>
-          </a>
+            <a href="#" className="-m-1.5 p-1.5">
+              <span className="text-base font-title tracking-tight text-blue-100 sm:text-6base">
+                Hire2
+              </span>
+              <span className="text-base font-title tracking-tight text-blue-900 sm:text-6base">
+                Retire
+              </span>
+            </a>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -84,7 +95,7 @@ export default function Navbar() {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                Products
+                  Products
                 </a>
                 <a
                   href="#"
@@ -106,12 +117,12 @@ export default function Navbar() {
                 </a>
               </div>
               <div className="py-6">
-                <a
-                  href="#"
+                <NavLink
+                  to="/login"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </a>
+                </NavLink>
               </div>
             </div>
           </div>
