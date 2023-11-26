@@ -6,13 +6,13 @@ Transform your employee lifecycle with AI-driven retirement solutions for employ
 
 A brief look at what we will discuss in this report:
 
-1. [The Idea](__#the-idea__)
-2. [Customer Flow](__#customer-flow__)
-3. [Asset Allocation](__#asset-allocation__)
-4. [Financial Schemes Recommender](__#financial-schemes-recommender__)
-5. [Data Visualization Assistant](__#data-visualization-assistant__)
-6. [FinChat - Chatbot](__#finchat---chatbot__)
-7. [Tech Stack](__#tech-stack__)
+1. The Idea
+2. Customer Flow
+3. Asset Allocation
+4. Financial Schemes Recommender
+5. Data Visualization Assistant
+6. FinChat - Chatbot
+7. Tech Stack
 
 ## The Idea
 
